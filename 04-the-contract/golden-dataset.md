@@ -38,12 +38,14 @@ Today: 10 cases. Goal for v1: about 150.
 
 ## Reliability Contract
 
-| Metric | Target | Measurement | Alert Threshold |
-|--------|--------|-------------|-----------------|
-| Accuracy (quality score) | 90% | Weekly run on the golden set (start with 10 rows, grow to ~150). LLM judge scores driver coverage, usefulness, signal density, strategy fit and trend fidelity. Rule checks handle the rest. | <85% → page the PM on call and stop any prompt or model change |
-| Hallucination rate | <1% of claims not backed by the assessment (100% groundedness gate on every proposal) | Same weekly run. Claim-by-claim check against the assessment. Also checked on a sample of live outputs. | >2% → pause AI proposals in production and go back to the last good prompt/model |
-| Latency (p95) | <10 seconds for a mitigation proposal (assumed, check with engineering) | Continuous monitoring of the API in production | >15 seconds for 5 minutes → alert engineering on call |
-| Drift velocity | <0.5% per week | 4-week rolling trend of the weekly quality score | >1% drop per week → audit the golden set and check for model/provider changes |
+| Metric | Target | Measurement | Alert Threshold | Consequence (what fires when the threshold trips) |
+|--------|--------|-------------|-----------------|---------------------------------------------------|
+| Accuracy (quality score) | 90% | Weekly run on the golden set (start with 10 rows, grow to ~150). LLM judge scores driver coverage, usefulness, signal density, strategy fit and trend fidelity. Rule checks handle the rest. | <85% | **Page on-call.** The PM on call gets paged and any prompt or model change is stopped until it's fixed. |
+| Hallucination rate | <1% of claims not backed by the assessment (100% groundedness gate on every proposal) | Same weekly run. Claim-by-claim check against the assessment. Also checked on a sample of live outputs. | >2% | **Auto-rollback.** Pause AI proposals in production and go back to the last good prompt/model. I picked rollback over a page because the AI speaks for the brand (Air Canada case), so we shouldn't wait for a person. |
+| Latency (p95) | <10 seconds for a mitigation proposal (assumed, check with engineering) | Continuous monitoring of the API in production | >15 seconds for 5 minutes | **Page on-call.** Alert goes to the engineering on-call. |
+| Drift velocity | <0.5% per week | 4-week rolling trend of the weekly quality score | >1% drop per week | **Gold-set audit.** Check the golden set and look for model/provider changes. I don't roll back here, because the world may have changed, not the model. |
+
+Human queue is the fourth consequence option. I use it in the HITL section below for low-confidence and failed-groundedness outputs, not for these four metrics.
 
 ## HITL Architecture
 <!-- When does a human step in? What's the escalation path? -->
