@@ -1,6 +1,6 @@
-# Diligent AI Risk Essentials (AI RE), an AI-assisted risk management product.
+# Diligent AI Risk Essentials (AI RE), an AI-assisted risk management product
 
-> We are building Exact Calorie for people who lose weight or must count calories for dietary reasons, giving them dinner recipes that hit their remaining daily calories exactly, because generative AI can now produce recipes to hard numeric constraints, so users no longer have to g…
+> We make the Diligent ERM portfolio the place risk teams do AI-assisted work they can defend to an auditor, and we charge for each mitigation plan they accept.
 
 ---
 
@@ -26,8 +26,7 @@
 - **Vulnerability Scores:** _(add: Moat _/5 · Data _/5 · Platform _/5)_
 - **Top Risk:** AI RE's hero AI feature is replicable with a frontier model, and we don't yet have a proprietary cross-customer data signal that compounds with usage, so differentiation rests on workflow depth and trust/grounding alone.
 - **Confidence:** M
-- **Prototype:** 
-- **Kill Criteria:** We stop if any of these hold after a pilot with real users and real (non-dummy) recipe generation:
+- **Kill Criteria:** If by month 3 of the pilot, customers don't accept our mitigation proposals measurably more often than a plain frontier-model draft from the same input, we stop the pricing change and re-scope. _(Threshold to be agreed with leadership.)_
 
 → Details: [`01-the-bet/`](01-the-bet/)
 
@@ -99,11 +98,11 @@
 
 **How you get this funded, shipped, and adopted.**
 
-- **Horizon 1 (Now):**
-- **Horizon 2 (Next):**
-- **Horizon 3 (Bet):**
-- **Board Narrative:** **The case:**
-- **Ask:** ## M1 Baseline vs. Now
-- **Key Strategic Change:**
+- **Horizon 1 (Now, 0-3 months):** Correction capture (≥80% of AI outputs with an accept/edit/reject signal) · AI-Powered Group Risk Assessments · Golden set 10 → 50 rows with a written reliability target · Accepted-proposal metering + AI usage analytics
+- **Horizon 2 (Next, 3-9 months):** Preference loop (≥20% fewer edits per tenant) · Continuous Risk Monitoring (merged with Advanced Risk Indicator Monitoring) · Bidirectional Projects Integration
+- **Horizon 3 (Bet, 9-18 months):** Financial Risk Quantification · Autonomous Risk Intelligence (only after Agent Boundaries are defined)
+- **Board Narrative:** Thesis: we make ERM the place risk teams do AI work they can defend to an auditor, and we charge for each accepted mitigation plan. The case: users already work around us with AI (5 workarounds found) while Microsoft moves into governance; our defense is grounding against the customer's own assessment plus per-tenant correction and preference loops (1/5 today, which is what the funding builds); +$15.42 gross profit per user (+45%) at 76% margin. Risks: an ungrounded mitigation reaching an auditor (caught by the groundedness gate and HITL; test set still 10 cases), cost on rejected proposals at 10x usage, and Copilot matching our acceptance rate.
+- **Ask:** 7 engineers + 1 PM for 6 months, go/no-go at month 3, fully loaded cost [$ — finance to fill in]. Paused if funded: federal deployment, cross-product issue management, financial risk quantification, autonomous agents, standalone analytics. Cross-portfolio trade-off still to name.
+- **Key Strategic Change:** From "AI Assist at every step" to "proof plus learning": generation isn't the moat, grounding to the customer's own assessments and per-tenant correction loops are, and pricing follows accepted work.
 
 → Details: [`06-the-pitch/`](06-the-pitch/)
