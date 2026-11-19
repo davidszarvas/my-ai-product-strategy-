@@ -26,7 +26,7 @@
 - **Vulnerability Scores:** _(add: Moat _/5 · Data _/5 · Platform _/5)_
 - **Top Risk:** AI RE's hero AI feature is replicable with a frontier model, and we don't yet have a proprietary cross-customer data signal that compounds with usage, so differentiation rests on workflow depth and trust/grounding alone.
 - **Confidence:** M
-- **Prototype:** https://lovable.dev/preview/c2jAKu15EnQlEvHddV2pfRybL9xaGQIQ
+- **Prototype:** 
 - **Kill Criteria:** We stop if any of these hold after a pilot with real users and real (non-dummy) recipe generation:
 
 → Details: [`01-the-bet/`](01-the-bet/)
