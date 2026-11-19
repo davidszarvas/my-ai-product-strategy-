@@ -35,19 +35,36 @@
 
 ## Board Pitch
 
-**Thesis (1 sentence):** AI RE wins regulated risk teams because it is the AI that proves every claim against the customer's own assessments, and it gets better for each customer with every correction, which a general-purpose copilot can't match.
+**Thesis (1 sentence):**
+We make the Diligent ERM portfolio the place risk teams do AI-assisted work they can defend to an auditor, and we charge for each mitigation plan they accept.
 
 **The case:**
-1. Why now: Frontier models have made drafting risks and mitigations nearly free, so the scarce thing is trust. Microsoft is moving into governance with Copilot, Purview and Agent 365. We have a short window to own "grounded AI for risk" inside the Diligent ERM workflow before customers default to a horizontal copilot.
-2. What's defensible: Not the model. Our hero feature can be copied with a frontier model. What's defensible is (a) workflow depth across the Diligent ERM portfolio (Projects integration, continuous monitoring), (b) a groundedness gate and HITL design that auditors can inspect, and (c) correction and preference loops that compound per tenant. Our honest starting point: Preference and Network loops score 1/5 today. H1 and H2 exist to fix Preference.
-3. The economics: Move from about $40/user/month seat pricing to a hybrid of $45 base plus $1 per accepted mitigation proposal, about $65/user/month at ~20 proposals. AI COGS is $9.58/user on an 80/20 cascade (55% small, 25% mid, 20% frontier). Gross margin drops from about 85% to 76%, but gross profit per user rises $15.42 (+45%). We get paid when the AI produces work the customer accepts.
+1. Why now: Risk teams are already using AI outside our product. Our own audit found 5 workarounds, 4 of them worth building. At the same time, Microsoft is moving into governance with Copilot, Purview and Agent 365. If we don't own grounded AI inside the ERM workflow in the next two quarters, customers will default to the copilot already on their desktop, and our role shrinks to system of record.
+2. What's defensible: Today, very little, and the pitch should say so plainly. A frontier model can copy our hero feature, and we have no data signal that pools across customers (tenant isolation rules it out by design). What we can defend is three things, two of which we have to build with this funding: (a) depth inside the Diligent workflow, (b) a check that proves every claim in a proposal against the customer's own assessment, and (c) a correction-and-preference loop that makes AI RE better for each customer the more they use it. That loop scores 1/5 today. Building it is most of what this ask buys.
+3. The economics: +$15.42 gross profit per user per month (+45%). We move from about $40/user seat pricing to $45 base plus $1 per accepted mitigation plan, about $65/user. AI cost is about $9.58/user, so margin goes from 85% to 76%, but each customer is worth more. Gap: we have not stress-tested this. Break-even and the margin if quality forces heavier use of expensive models are both still blank, and the $40 and 20-plans-per-user figures are assumptions. Month 1 replaces all three with real numbers.
 
 **The risks:**
-1. Trust / failure modes: A hallucinated or ungrounded mitigation in regulated work is a credibility-ending event. Mitigation: a groundedness gate on every proposal, HITL when confidence is under 70% or a proposal fails the gate twice, a weekly golden set and a monthly expert review of 50 random outputs.
-2. Scale / governance: Bulk and agent jobs multiply both errors and cost. If quality forces a 60/40 cascade, COGS rises and the margin shrinks. Vendor portability is "Locked": swapping models means rewrites and re-validation. Mitigation: no agents until Agent Boundaries are defined (H3), cascade ratios tested in H1, COGS tracked monthly.
-3. Competitive: Microsoft Copilot with Purview and Agent 365 is bundled and already in the tenant. OpenAI and Anthropic enterprise agents are a secondary threat. Mitigation: compete on grounding to the customer's own assessments and on depth inside the Diligent workflow, not on generation quality.
+1. Trust / failure modes: The front-page scenario is a regulated company adopting an AI-proposed mitigation that cites a control or fact that isn't in its own assessment, and an auditor or regulator finding it. How we catch it:
+   - every proposal is checked against the assessment before a user sees it
+   - anything under 70% backed, or failing the check twice, goes to a human
+   - suspicious inputs are blocked
+   - a domain expert reviews 50 random outputs and every escalation monthly
 
-**The ask:** Approve a [6]-month validation of H1 + H2 with [N] design-partner tenants and [X] engineers + [1] domain expert reviewer. Go/no-go at month 3 on: correction capture ≥80%, golden-set groundedness ≥95% and accepted-proposal volume near the 20/user/month pricing assumption. If those miss, we stop the hybrid pricing move and revisit the Bet.
+   Weakness, stated plainly: our test set is 10 cases and we have no written reliability target yet. Both are fixed in the first 4 weeks, before any customer pilot scales.
+2. Scale / governance: At 10x usage, three things break.
+   - Cost: we pay for every proposal but only earn on accepted ones, so a low acceptance rate turns usage into losses.
+   - Review: 50 human checks a month doesn't scale with volume.
+   - Lock-in: switching AI vendors today means rewriting and re-validating by hand.
+
+   Bulk and agent jobs (for example, regenerating a whole risk register) are explicitly not in this ask. They wait until escalation is proven at volume.
+3. Competitive: The kill scenario is Microsoft shipping risk drafting in Copilot that our pilot customers accept about as often as ours. Kill criterion: if by month 3 pilot customers don't accept our proposals measurably more often than a plain frontier-model draft from the same input, we stop the pricing change and re-scope. Gap: our original kill criteria were never written down. This line replaces them and needs a number agreed in this room.
+
+**The ask:**
+7 engineers + 1 PM for 6 months. Fully loaded cost: [$ — not in the strategy; finance to fill in]. Check-in at month 6, go/no-go at month 3.
+- **Months 0–3:** capture every accept, edit and reject on AI output; AI-assisted group risk assessments; a 50-case test set with a written reliability target; billing-grade metering of accepted proposals.
+- **Months 3–6:** a preference loop that learns from each customer's edits (target: 20% fewer edits), and two-way sync with Projects.
+
+Paused if funded: federal deployment, cross-product issue management, financial risk quantification, autonomous risk agents, and a standalone analytics build. Gap: the cross-portfolio trade-off (which other team's bet waits) isn't in the strategy. Name it before the meeting.
 
 ## M1 Baseline vs. Now
 *Your 3-sentence AI strategy from Module 1 vs. what you'd say now:*
