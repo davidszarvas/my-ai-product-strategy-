@@ -1,4 +1,4 @@
-# Diligent AI Risk Essentials (AI RE), an AI-assisted risk management product within the Diligent ERM portfolio, with AI Assist at every step of the risk workflow: risk identification, risk assessment, and mitigation proposals grounded in customer risk assessments.
+# Diligent AI Risk Essentials (AI RE), an AI-assisted risk management product.
 
 > We are building Exact Calorie for people who lose weight or must count calories for dietary reasons, giving them dinner recipes that hit their remaining daily calories exactly, because generative AI can now produce recipes to hard numeric constraints, so users no longer have to g…
 
